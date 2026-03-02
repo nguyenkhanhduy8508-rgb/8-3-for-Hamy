@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>8/3 đặc biệt cho Hamy 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background: linear-gradient(135deg, #ffd6e7, #ffeaf4);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+.container {
+    position: relative;
+    z-index: 2;
+    margin-top: 120px;
+}
+
+h1 {
+    color: #ff4f81;
+    font-size: 45px;
+}
+
+p {
+  font-size: 26px;      
+  font-weight: 700;     
+  width: 75%;
+  margin: auto;
+  color: #222;          
+  line-height: 1.6;     
+}
+
+button:hover {
+    background: #ff2e6a;
+    transform: scale(1.1);
+}
+
+.heart {
+    position: fixed;
+    top: -10px;
+    color: #ff4f81;
+    font-size: 20px;
+    animation: fall 3s linear infinite;
+    z-index: 1;
+}
+
+audio {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+.gallery {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(5, 120px);
+  grid-template-rows: repeat(3, 130px);
+  gap: 25px;
+  justify-content: center;
+  align-content: center;
+}
+
+.gallery img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%; 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+.gallery img:nth-child(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.gallery img:nth-child(2) {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.gallery img:nth-child(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.gallery img:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+  transform: scale(1.15); 
+}
+
+.gallery img:nth-child(5) {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+
+.gallery img:nth-child(6) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.gallery img:nth-child(7) {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+
+#extraMessage {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #ff4f81;
+}
+
+#extraMessage.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+.side-decor {
+  position: fixed;
+  top: 68%;              
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #ff4f81;
+  opacity: 0.75;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.left-decor {
+  left: 5%;
+}
+
+.right-decor {
+  right: 5%;
+}
+
+.sticker {
+  width: 190px;          
+  margin-top: 12px;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Chúc mừng 8/3 🌸</h1>
+    <p style="margin-top:20px;">
+        Chúc Hamy một ngày 8/3 thật rực rỡ và tràn đầy yêu thương.
+        Mong rằng hôm nay – và cả những ngày sau này – Hamy luôn được đối xử dịu dàng, được cười nhiều hơn buồn, và luôn tự hào về chính mình.
+        Cảm ơn vì đã xuất hiện và mang đến cho tui những cảm xúc rất đặc biệt, dù chúng ta mới quen nhau chưa lâu.
+        Tui không biết tương lai sẽ ra sao, nhưng tui mong mình sẽ có cơ hội được ở bên cạnh Hamy nhiều hơn,
+        để mỗi dịp đặc biệt như thế này, tui đều có thể là người khiến em mỉm cười. 💖
+    </p>
+
+    <p id="extraMessage"></p>
+
+    <button onclick="specialMessage()">Bấm vào đây nè</button>
+</div>
+
+<div class="side-decor left-decor">
+    💗 My favorite smile 😊 💗
+    <br>
+    <img src="1.png" class="sticker">
+</div>
+<div class="side-decor right-decor">
+    🌸 Hope I can make you smile 🌼 🌸
+    <br>
+    <img src="2.png" class="sticker">
+</div>
+
+<audio id="music" loop>
+  <source src="coem.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+setInterval(createHeart, 300);
+function specialMessage() {
+  const music = document.getElementById("music");
+  music.play();
+
+  const extra = document.getElementById("extraMessage");
+
+  extra.innerHTML += `
+<br><br>Tui hy vọng một ngày nào đó được là người tặng quà 8/3 cho Hamy mỗi năm 🥰
+
+<div class="gallery">
+  <img src="img1.jpg">
+  <img src="img2.jpg">
+  <img src="img3.jpg">
+  <img src="img4.jpg">
+  <img src="img5.jpg">
+  <img src="img6.jpg">
+  <img src="img7.jpg">
+</div>
+`;
+
+extra.classList.add("show");
+
+const images = document.querySelectorAll(".gallery img");
+
+images.forEach((img, index) => {
+    setTimeout(() => {
+        img.classList.add("show");
+    }, index * 800);
+});  
+
+  document.querySelector("button").style.display = "none";
+}
+</script>
+
+</body>
+</html>
